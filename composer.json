@@ -1,5 +1,5 @@
 {
-    "name": "shetabit/components",
+    "name": "shetabit/base",
     "description": ":description",
     "license": "license",
     "authors": [
@@ -8,8 +8,8 @@
             "homepage": "https://github.com/AliN11"
         }
     ],
-    "homepage": "https://github.com/shetabit/components",
-    "keywords": ["Laravel", "Components"],
+    "homepage": "https://github.com/shetabit/base",
+    "keywords": ["Laravel", "Base"],
     "require": {
         "illuminate/support": "~5"
     },
@@ -21,24 +21,24 @@
     },
     "autoload": {
         "psr-4": {
-            "Shetabit\\Components\\": "src/"
-        }
+            "Shetabit\\Base\\": "src/"
+        },
         "files": [
             "src/Helpers/functionss.php"
         ]
     },
     "autoload-dev": {
         "psr-4": {
-            "Shetabit\\Components\\Tests\\": "tests"
+            "Shetabit\\Base\\Tests\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Shetabit\\Components\\ComponentsServiceProvider"
+                "Shetabit\\Base\\BaseServiceProvider"
             ],
             "aliases": {
-                "Components": "Shetabit\\Components\\Facades\\Components"
+                "Base": "Shetabit\\Base\\Facades\\Base"
             }
         }
     }

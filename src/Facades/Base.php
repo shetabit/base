@@ -1,10 +1,10 @@
 <?php
 
-namespace Shetabit\Components\Facades;
+namespace Shetabit\Base\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Components extends Facade
+class Base extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -13,6 +13,6 @@ class Components extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'Components';
+        return 'Base';
     }
 }

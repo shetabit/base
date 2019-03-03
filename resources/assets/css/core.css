@@ -592,7 +592,7 @@ a:focus {
 .text-dark {
   color: #797979 !important;
 }
-/* Form components */
+/* Form component */
 textarea.form-control {
   min-height: 90px;
 }

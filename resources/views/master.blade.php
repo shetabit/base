@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>{!! (isset($page_title) ? $page_title.' | ' : '') . env('APP_NAME') !!}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
-    <meta name="author" content="Coderthemes">
-    <link rel="shortcut icon" href="{!! config('components.assets_path') !!}/images/favicon_1.ico">
-    <title>قالب اچ تی ام ال مدیریتی نادیا</title>
-		<link rel="stylesheet" href="{!! config('components.assets_path') !!}/plugins/morris/morris.css">
-
-    <link href="{!! config('components.assets_path') !!}/css/bootstrap-rtl.min.css" rel="stylesheet" type="text/css" />
-    <link href="{!! config('components.assets_path') !!}/css/core.css" rel="stylesheet" type="text/css" />
-    <link href="{!! config('components.assets_path') !!}/css/components.css" rel="stylesheet" type="text/css" />
-    <link href="{!! config('components.assets_path') !!}/css/icons.css" rel="stylesheet" type="text/css" />
-    <link href="{!! config('components.assets_path') !!}/css/pages.css" rel="stylesheet" type="text/css" />
-    <link href="{!! config('components.assets_path') !!}/css/responsive.css" rel="stylesheet" type="text/css" />
-    <link href="{!! config('components.assets_path') !!}/css/custom.css" rel="stylesheet" type="text/css" />
+    <link href="{!! config('base.assets_path') !!}/css/bootstrap-rtl.min.css" rel="stylesheet" type="text/css" />
+    <link href="{!! config('base.assets_path') !!}/css/core.css" rel="stylesheet" type="text/css" />
+    <link href="{!! config('base.assets_path') !!}/css/components.css" rel="stylesheet" type="text/css" />
+    <link href="{!! config('base.assets_path') !!}/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="{!! config('base.assets_path') !!}/css/pages.css" rel="stylesheet" type="text/css" />
+    <link href="{!! config('base.assets_path') !!}/css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="{!! config('base.assets_path') !!}/css/custom.css" rel="stylesheet" type="text/css" />
+    <link href="{!! config('base.assets_path') !!}/plugins/bootstrap-sweetalert/sweet-alert.css" rel="stylesheet" type="text/css">
+    <link href="{!! config('base.assets_path') !!}/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" type="text/css">
+    <link href="{!! config('base.assets_path') !!}/plugins/kamadatepicker/style/kamadatepicker.min.css"  rel="stylesheet" type="text/css" />
     @stack('styles')
-    <script src="{!! config('components.assets_path') !!}/js/modernizr.min.js"></script>
+    <script src="{!! config('base.assets_path') !!}/js/modernizr.min.js"></script>
   </head>
   <body class="fixed-left">
-    <script>
-      var App = {
-        token: '{!! csrf_token() !!}',
-        base_url: '{!! url('/') !!}',
-        pages: {}
-      }
-    </script>
-    <div id="app">
-      <div id="wrapper">
+    <div id="wrapper">
+      @include('shetabit-base::shared.sidebar')
+      <script>
+        var App = {
+          token: '{!! csrf_token() !!}',
+          base_url: '{!! url("/") !!}',
+          pages: {}
+        }
+        var AppMethods = {}
+      </script>
+      @stack('app-methods')
 
-        @include('shetabit-components::shared.topbar')
-        @include('shetabit-components::shared.sidebar')
+      @include('shetabit-base::shared.components')
+    </div>
+    <div id="app">
+      @include('shetabit-base::shared.topbar')
 
 
         <div class="content-page">
@@ -39,37 +41,31 @@
             <div class="container">
               @yield('content')
             </div>
+            @stack('page-bottom')
           </div>
           <footer class="footer text-right">
-              © 1396. تمام حقوق محفوظ است
+              © 1397. تمام حقوق محفوظ است
           </footer>
         </div>
-      </div>
     </div>
 
-
-
     <script>var resizefunc = [];</script>
-    <script src="{!! config('components.assets_path') !!}/js/jquery.min.js"></script>
-    <script src="{!! config('components.assets_path') !!}/js/bootstrap-rtl.min.js"></script>
-    <script src="{!! config('components.assets_path') !!}/js/detect.js"></script>
-    <script src="{!! config('components.assets_path') !!}/js/fastclick.js"></script>
-    <script src="{!! config('components.assets_path') !!}/js/jquery.slimscroll.js"></script>
-    <script src="{!! config('components.assets_path') !!}/js/jquery.blockUI.js"></script>
-    <script src="{!! config('components.assets_path') !!}/js/waves.js"></script>
-    <script src="{!! config('components.assets_path') !!}/js/wow.min.js"></script>
-    <script src="{!! config('components.assets_path') !!}/js/jquery.nicescroll.js"></script>
-    <script src="{!! config('components.assets_path') !!}/js/jquery.scrollTo.min.js"></script>
-    <script src="{!! config('components.assets_path') !!}/plugins/moment/moment.js"></script>
-    <script src="{!! config('components.assets_path') !!}/plugins/morris/morris.min.js"></script>
-    <script src="{!! config('components.assets_path') !!}/plugins/raphael/raphael-min.js"></script>
-    <script src="{!! config('components.assets_path') !!}/plugins/bootstrap-sweetalert/sweet-alert.min.js"></script>
-    <script src="{!! config('components.assets_path') !!}/js/jquery.core.js"></script>
-    <script src="{!! config('components.assets_path') !!}/js/jquery.app.js"></script>
-    <script src="{!! config('components.assets_path') !!}/pages/jquery.dashboard_2.js"></script>
-    <script src="{!! url('/') !!}/js/vue.min.js"></script>
-    <script src="{!! config('components.assets_path') !!}/js/main.js"></script>
+    <script src="{!! config('base.assets_path') !!}/js/jquery.min.js"></script>
+    <script src="{!! config('base.assets_path') !!}/js/bootstrap-rtl.min.js"></script>
+    <script src="{!! config('base.assets_path') !!}/js/detect.js"></script>
+    <script src="{!! config('base.assets_path') !!}/js/jquery.slimscroll.js"></script>
+    <script src="{!! config('base.assets_path') !!}/js/jquery.nicescroll.js"></script>
+    <script src="{!! config('base.assets_path') !!}/plugins/bootstrap-sweetalert/sweet-alert.min.js"></script>
+    <script src="{!! config('base.assets_path') !!}/plugins/notifyjs/js/notify.js"></script>
+    <script src="{!! config('base.assets_path') !!}/plugins/notifications/notify-metro.js"></script>
+    <script src="{!! config('base.assets_path') !!}/plugins/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="{!! config('base.assets_path') !!}/js/vue.min.js"></script>
+    <script src="{!! config('base.assets_path') !!}/js/main.js"></script>
+    <script src="{!! config('base.assets_path') !!}/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js"></script>
+    <script src="{!! config('base.assets_path') !!}/plugins/kamadatepicker/src/kamadatepicker.min.js"></script>
     @stack('scripts')
+    <script src="{!! config('base.assets_path') !!}/js/jquery.core.js"></script>
+    <script src="{!! config('base.assets_path') !!}/js/jquery.app.js"></script>
   </body>
 
-</html>
+    </html>

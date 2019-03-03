@@ -1,4 +1,4 @@
-# components
+# base
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
@@ -12,7 +12,7 @@ This is where your description should go. Take a look at [contributing.md](contr
 Via Composer
 
 ``` bash
-$ composer require shetabit/components
+$ composer require shetabit/base
 ```
 
 ## Usage
@@ -44,14 +44,14 @@ If you discover any security related issues, please email author email instead o
 
 license. Please see the [license file](license.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/shetabit/components.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/shetabit/components.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/shetabit/components/master.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/shetabit/base.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/shetabit/base.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/shetabit/base/master.svg?style=flat-square
 [ico-styleci]: https://styleci.io/repos/12345678/shield
 
-[link-packagist]: https://packagist.org/packages/shetabit/components
-[link-downloads]: https://packagist.org/packages/shetabit/components
-[link-travis]: https://travis-ci.org/shetabit/components
+[link-packagist]: https://packagist.org/packages/shetabit/base
+[link-downloads]: https://packagist.org/packages/shetabit/base
+[link-travis]: https://travis-ci.org/shetabit/base
 [link-styleci]: https://styleci.io/repos/12345678
 [link-author]: https://github.com/shetabit
 [link-contributors]: ../../contributors

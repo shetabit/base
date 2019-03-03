@@ -229,7 +229,7 @@ associated interface definition files, plus the scripts used to
 control compilation and installation of the executable.  However, as a
 special exception, the source code distributed need not include
 anything that is normally distributed (in either source or binary
-form) with the major components (compiler, kernel, and so on) of the
+form) with the major base (compiler, kernel, and so on) of the
 operating system on which the executable runs, unless that component
 itself accompanies the executable.
 
@@ -676,7 +676,7 @@ Library" must include any data and utility programs needed for
 reproducing the executable from it.  However, as a special exception,
 the materials to be distributed need not include anything that is
 normally distributed (in either source or binary form) with the major
-components (compiler, kernel, and so on) of the operating system on
+base (compiler, kernel, and so on) of the operating system on
 which the executable runs, unless that component itself accompanies
 the executable.
 
@@ -1343,11 +1343,11 @@ include source files, build scripts and documentation.
 "Reserved Font Name" refers to any names specified as such after the
 copyright statement(s).
 
-"Original Version" refers to the collection of Font Software components as
+"Original Version" refers to the collection of Font Software base as
 distributed by the Copyright Holder(s).
 
 "Modified Version" refers to any derivative made by adding to, deleting,
-or substituting -- in part or in whole -- any of the components of the
+or substituting -- in part or in whole -- any of the base of the
 Original Version, by changing formats or by porting the Font Software to a
 new environment.
 
@@ -1360,7 +1360,7 @@ a copy of the Font Software, to use, study, copy, merge, embed, modify,
 redistribute, and sell modified and unmodified copies of the Font
 Software, subject to the following conditions:
 
-1) Neither the Font Software nor any of its individual components,
+1) Neither the Font Software nor any of its individual base,
 in Original or Modified Versions, may be sold by itself.
 
 2) Original or Modified Versions of the Font Software may be bundled,

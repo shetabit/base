@@ -23,7 +23,7 @@
               color: colors[0],
               data: seriesData[0],
               name: labels[0]
-            }, 
+            },
             {
               color: colors[1],
               data: seriesData[1],
@@ -31,15 +31,15 @@
             }
           ]
       });
-   
+
       areaGraph.render();
-      
+
       setInterval( function() {
           random.removeData(seriesData);
           random.addData(seriesData);
           areaGraph.update();
       }, 700 );
-      
+
       $(window).resize(function(){
           areaGraph.render();
       });
@@ -66,10 +66,10 @@
                 data: multipleAdata1,
                 color: colors[0],
                 border: 0
-        }, {    
+        }, {
                 data: multipleAdata2,
                 color: colors[1]
-        }]    
+        }]
         });
         Multiplearea.render();
     },
@@ -179,7 +179,7 @@
             data: seriesData.shift().map(function(d) { return { x: d.x, y: d.y * 1.5 } }),
             color: colors[4],
             renderer: 'line'
-            
+
           }
         ]
       } );
@@ -206,7 +206,7 @@
           legend: legend
       });
     },
-    //initializing various charts and components
+    //initializing various charts and base
     RickshawChart.prototype.init = function() {
       //live statics
       var seriesData = [ [], [], [], [], [], [], [], [], [] ];
@@ -222,30 +222,30 @@
       this.createAreaGraph("#linechart", seriesData, random, colors, labels);
 
       //create Simple area graph
-      var simpleAdata = [ 
-                { x: 0, y: 20 }, 
-                { x: 1, y: 25 }, 
-                { x: 2, y: 38 }, 
-                { x: 3, y: 28 }, 
-                { x: 4, y: 20 } 
+      var simpleAdata = [
+                { x: 0, y: 20 },
+                { x: 1, y: 25 },
+                { x: 2, y: 38 },
+                { x: 3, y: 28 },
+                { x: 4, y: 20 }
             ];
       var simpleAcolors = ['#5fbeaa'];
       this.createSimpleareaGraph("#simplearea", simpleAdata, simpleAcolors);
 
       //create Multiple area graph
-      var multipleAdata1 = [ 
-                { x: 0, y: 40 }, 
-                    { x: 1, y: 49 }, 
-                    { x: 2, y: 38 }, 
-                    { x: 3, y: 30 }, 
-                    { x: 4, y: 32 } 
+      var multipleAdata1 = [
+                { x: 0, y: 40 },
+                    { x: 1, y: 49 },
+                    { x: 2, y: 38 },
+                    { x: 3, y: 30 },
+                    { x: 4, y: 32 }
             ];
-        var multipleAdata2 = [ 
+        var multipleAdata2 = [
             { x: 0, y: 40 },
                     { x: 1, y: 49 },
-                    { x: 2, y: 38 }, 
-                    { x: 3, y: 30 }, 
-                    { x: 4, y: 32 }  
+                    { x: 2, y: 38 },
+                    { x: 3, y: 30 },
+                    { x: 4, y: 32 }
         ];
       var MultipleAcolors = ['#5fbeaa','#ebeff2'];
       this.createMultipleareaGraph("#multiplearea", multipleAdata1, multipleAdata2, MultipleAcolors);
@@ -271,7 +271,7 @@
 
     //init dashboard
     $.RickshawChart = new RickshawChart, $.RickshawChart.Constructor = RickshawChart
-    
+
 }(window.jQuery),
 
 //initializing rickksawChart

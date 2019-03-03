@@ -168,25 +168,25 @@ function($) {
 }(window.jQuery),
 
 /**
- * Components
+ * Base
  */
 function($) {
     "use strict";
 
-    var Components = function() {};
+    var Base = function() {};
 
     //initializing tooltip
-    Components.prototype.initTooltipPlugin = function() {
+    Base.prototype.initTooltipPlugin = function() {
         $.fn.tooltip && $('[data-toggle="tooltip"]').tooltip()
     },
 
     //initializing popover
-    Components.prototype.initPopoverPlugin = function() {
+    Base.prototype.initPopoverPlugin = function() {
         $.fn.popover && $('[data-toggle="popover"]').popover()
     },
 
     //initializing custom modal
-    Components.prototype.initCustomModalPlugin = function() {
+    Base.prototype.initCustomModalPlugin = function() {
         $('[data-plugin="custommodal"]').on('click', function(e) {
         	Custombox.open({
                 target: $(this).attr("href"),
@@ -199,19 +199,19 @@ function($) {
     },
 
     //initializing nicescroll
-    Components.prototype.initNiceScrollPlugin = function() {
+    Base.prototype.initNiceScrollPlugin = function() {
         //You can change the color of scroll bar here
         $.fn.niceScroll &&  $(".nicescroll").niceScroll({ cursorcolor: '#98a6ad',railalign: 'left',cursorwidth:'6px', cursorborderradius: '5px'});
     },
 
     //initializing Slimscroll
-    Components.prototype.initSlimScrollPlugin = function() {
+    Base.prototype.initSlimScrollPlugin = function() {
         //You can change the color of scroll bar here
         $.fn.niceScroll &&  $(".slimscroll-noti").slimScroll({ position: 'left',size: "5px", color: '#98a6ad',height: '230px',wheelStep: 10});
     },
 
     //range slider
-    Components.prototype.initRangeSlider = function() {
+    Base.prototype.initRangeSlider = function() {
         $.fn.slider && $('[data-plugin="range-slider"]').slider({});
     },
 
@@ -219,13 +219,13 @@ function($) {
      * Form related controls
      */
     //switch
-    Components.prototype.initSwitchery = function() {
+    Base.prototype.initSwitchery = function() {
         $('[data-plugin="switchery"]').each(function (idx, obj) {
             new Switchery($(this)[0], $(this).data());
         });
     },
     //multiselect
-    Components.prototype.initMultiSelect = function() {
+    Base.prototype.initMultiSelect = function() {
         if($('[data-plugin="multiselect"]').length > 0)
             $('[data-plugin="multiselect"]').multiSelect($(this).data());
     },
@@ -234,7 +234,7 @@ function($) {
      * small charts related widgets
      */
      //peity charts
-     Components.prototype.initPeityCharts = function() {
+     Base.prototype.initPeityCharts = function() {
         $('[data-plugin="peity-pie"]').each(function(idx, obj) {
             var colors = $(this).attr('data-colors')?$(this).attr('data-colors').split(","):[];
             var width = $(this).attr('data-width')?$(this).attr('data-width'):20; //default is 20
@@ -279,7 +279,7 @@ function($) {
          });
      },
 
-    Components.prototype.initCounterUp = function() {
+    Base.prototype.initCounterUp = function() {
         var delay = $(this).attr('data-delay')?$(this).attr('data-delay'):100; //default is 100
         var time = $(this).attr('data-time')?$(this).attr('data-time'):1200; //default is 1200
          $('[data-plugin="counterup"]').each(function(idx, obj) {
@@ -293,7 +293,7 @@ function($) {
 
 
     //initilizing
-    Components.prototype.init = function() {
+    Base.prototype.init = function() {
         var $this = this;
         this.initTooltipPlugin(),
         this.initPopoverPlugin(),
@@ -309,13 +309,13 @@ function($) {
         $.Portlet.init();
     },
 
-    $.Components = new Components, $.Components.Constructor = Components
+    $.Base = new Base, $.Base.Constructor = Base
 
 }(window.jQuery),
     //initializing main application module
 function($) {
     "use strict";
-    $.Components.init();
+    $.Base.init();
 }(window.jQuery);
 
 

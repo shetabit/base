@@ -3937,7 +3937,7 @@
  */
 
 /**
- * An object containing definitions of widget components (part name => CSS selector).
+ * An object containing definitions of widget base (part name => CSS selector).
  *
  *		parts: {
  *			image: 'img',

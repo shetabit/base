@@ -21,6 +21,17 @@
   </div>
 </template>
 
+<template id="panel">
+    <div :id="id" :class="'panel ' + (!type ? 'panel-default' : ('panel-color panel-' + type))">
+      <div class="panel-heading">
+        <h3 class="panel-title"><slot name="title"></slot></h3>
+      </div>
+      <div class="panel-body">
+        <slot name="body"></slot>
+      </div>
+    </div>
+</template>
+
 <template id="modal-full">
   <div :id="id" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-full">
@@ -54,4 +65,20 @@
 </template>
 
 
+<template id="product-img">
+  <img :src="App.base_url + '/assets/images/products/' + src + '.jpg'" class="thumbnail thumb-lg">
+</template>
+
+<template id="product-status">
+  <span class="label label-success" v-if="status == 3">موجود</span>
+  <span class="label label-info" v-else-if="status == 2">بزودی</span>
+  <span class="label label-danger" v-else-if="status == 1">ناموجود</span>
+</template>
+
+
+<template id="loading">
+  <div class="text-center">
+    <i class="fa fa-spin fa-spinner"></i>
+  </div>
+</template>
 <!-- END VUE COMPONENTS -->

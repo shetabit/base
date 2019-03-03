@@ -1,17 +1,17 @@
 <?php
-namespace Shetabit\Components\Http\Controllers;
+namespace Shetabit\Base\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Shetabit\Components\Components;
+use Shetabit\Base\Base;
 
 class HomeController extends Controller
 {
 
     public function index()
     {
-        Components::all();
-        return view('shetabit-components::index');
+        Base::all();
+        return view('shetabit-base::index');
     }
 
     public function store(Request $request)

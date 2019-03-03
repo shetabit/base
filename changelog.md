@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to `components` will be documented in this file.
+All notable changes to `base` will be documented in this file.
 
 ## Version 1.0
 

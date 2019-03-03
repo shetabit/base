@@ -24,7 +24,7 @@
                     <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i class="icon-size-fullscreen"></i></a>
                   </li>
                   <li class="dropdown top-menu-item-xs">
-                    <a href="" class="dropdown-toggle profile waves-effect waves-light" data-toggle="dropdown" aria-expanded="true"><img src="{!! config('components.assets_path') !!}/images/users/avatar-1.jpg" alt="user-img" class="img-circle"> </a>
+                    <a href="" class="dropdown-toggle profile waves-effect waves-light" data-toggle="dropdown" aria-expanded="true"><img src="{!! config('base.assets_path') !!}/images/users/avatar-1.jpg" alt="user-img" class="img-circle"> </a>
                     <ul class="dropdown-menu">
                       <li><a href="javascript:void(0)"><i class="ti-power-off m-r-10 text-danger"></i> خروج</a></li>
                     </ul>

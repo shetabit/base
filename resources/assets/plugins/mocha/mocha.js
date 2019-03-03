@@ -76,7 +76,7 @@ require.register("browser/diff.js", function(module, exports, require){
 var JsDiff = (function() {
   /*jshint maxparams: 5*/
   function clonePath(path) {
-    return { newPos: path.newPos, components: path.components.slice(0) };
+    return { newPos: path.newPos, base: path.base.slice(0) };
   }
   function removeEmpty(array) {
     var ret = [];
@@ -118,12 +118,12 @@ var JsDiff = (function() {
 
         var newLen = newString.length, oldLen = oldString.length;
         var maxEditLength = newLen + oldLen;
-        var bestPath = [{ newPos: -1, components: [] }];
+        var bestPath = [{ newPos: -1, base: [] }];
 
         // Seed editLength = 0
         var oldPos = this.extractCommon(bestPath[0], newString, oldString, 0);
         if (bestPath[0].newPos+1 >= newLen && oldPos+1 >= oldLen) {
-          return bestPath[0].components;
+          return bestPath[0].base;
         }
 
         for (var editLength = 1; editLength <= maxEditLength; editLength++) {
@@ -149,17 +149,17 @@ var JsDiff = (function() {
             // and does not pass the bounds of the diff graph
             if (!canAdd || (canRemove && addPath.newPos < removePath.newPos)) {
               basePath = clonePath(removePath);
-              this.pushComponent(basePath.components, oldString[oldPos], undefined, true);
+              this.pushComponent(basePath.base, oldString[oldPos], undefined, true);
             } else {
               basePath = clonePath(addPath);
               basePath.newPos++;
-              this.pushComponent(basePath.components, newString[basePath.newPos], true, undefined);
+              this.pushComponent(basePath.base, newString[basePath.newPos], true, undefined);
             }
 
             var oldPos = this.extractCommon(basePath, newString, oldString, diagonalPath);
 
             if (basePath.newPos+1 >= newLen && oldPos+1 >= oldLen) {
-              return basePath.components;
+              return basePath.base;
             } else {
               bestPath[diagonalPath] = basePath;
             }
@@ -167,15 +167,15 @@ var JsDiff = (function() {
         }
       },
 
-      pushComponent: function(components, value, added, removed) {
-        var last = components[components.length-1];
+      pushComponent: function(base, value, added, removed) {
+        var last = base[base.length-1];
         if (last && last.added === added && last.removed === removed) {
           // We need to clone here as the component clone operation is just
           // as shallow array clone
-          components[components.length-1] =
+          base[base.length-1] =
             {value: this.join(last.value, value), added: added, removed: removed };
         } else {
-          components.push({value: value, added: added, removed: removed });
+          base.push({value: value, added: added, removed: removed });
         }
       },
       extractCommon: function(basePath, newString, oldString, diagonalPath) {
@@ -187,7 +187,7 @@ var JsDiff = (function() {
           newPos++;
           oldPos++;
 
-          this.pushComponent(basePath.components, newString[newPos], undefined, undefined);
+          this.pushComponent(basePath.base, newString[newPos], undefined, undefined);
         }
         basePath.newPos = newPos;
         return oldPos;
@@ -700,28 +700,28 @@ Progress.prototype.draw = function(ctx){
       , y = half
       , rad = half - 1
       , fontSize = this._fontSize;
-  
+
     ctx.font = fontSize + 'px ' + this._font;
-  
+
     var angle = Math.PI * 2 * (percent / 100);
     ctx.clearRect(0, 0, size, size);
-  
+
     // outer circle
     ctx.strokeStyle = '#9f9f9f';
     ctx.beginPath();
     ctx.arc(x, y, rad, 0, angle, false);
     ctx.stroke();
-  
+
     // inner circle
     ctx.strokeStyle = '#eee';
     ctx.beginPath();
     ctx.arc(x, y, rad - 1, 0, angle, true);
     ctx.stroke();
-  
+
     // text
     var text = this._text || (percent | 0) + '%'
       , w = ctx.measureText(text).width;
-  
+
     ctx.fillText(
         text
       , x - w / 2 + 1

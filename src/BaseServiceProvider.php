@@ -1,10 +1,10 @@
 <?php
 
-namespace Shetabit\Components;
+namespace Shetabit\Base;
 
 use Illuminate\Support\ServiceProvider;
 
-class ComponentsServiceProvider extends ServiceProvider
+class BaseServiceProvider extends ServiceProvider
 {
     /**
      * Perform post-registration booting of services.
@@ -14,7 +14,7 @@ class ComponentsServiceProvider extends ServiceProvider
     public function boot()
     {
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'shetabit');
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'shetabit-components');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'shetabit-base');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
@@ -35,11 +35,11 @@ class ComponentsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/components.php', 'components');
+        $this->mergeConfigFrom(__DIR__.'/../config/base.php', 'base');
 
         // Register the service the package provides.
-        $this->app->singleton('components', function ($app) {
-            return new components;
+        $this->app->singleton('base', function ($app) {
+            return new base;
         });
     }
 
@@ -50,7 +50,7 @@ class ComponentsServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['components'];
+        return ['base'];
     }
 
     /**
@@ -62,23 +62,23 @@ class ComponentsServiceProvider extends ServiceProvider
     {
         // Publishing the configuration file.
         $this->publishes([
-            __DIR__.'/../config/components.php' => config_path('components.php'),
-        ], 'components.config');
+            __DIR__.'/../config/base.php' => config_path('base.php'),
+        ], 'base.config');
 
         // Publishing the views.
         $this->publishes([
-            __DIR__.'/../resources/views' => base_path('resources/views/vendor/shetabit-components'),
-        ], 'components.views');
+            __DIR__.'/../resources/views' => base_path('resources/views/vendor/shetabit-base'),
+        ], 'base.views');
 
         // Publishing assets.
         $this->publishes([
-            __DIR__.'/../resources/assets' => public_path('vendor/shetabit-components/assets'),
-        ], 'components.views');
+            __DIR__.'/../resources/assets' => public_path('vendor/shetabit-base/assets'),
+        ], 'base.views');
 
         // Publishing the translation files.
         /*$this->publishes([
             __DIR__.'/../resources/lang' => resource_path('lang/vendor/shetabit'),
-        ], 'components.views');*/
+        ], 'base.views');*/
 
         // Registering package commands.
         // $this->commands([]);
