@@ -39,11 +39,13 @@ class Repository
 
     public function update($model, array $data)
     {
+        $model->update($data);
+
         foreach ($data as $key => $value) {
             $model->{$key} = $value;
         }
 
-        $model->save();
+        // $model->save();
 
         return $model;
     }
